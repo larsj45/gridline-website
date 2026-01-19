@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gridline Education | Structural Integrity for Your Digital Campus</title>
+    <meta name="description" content="Financial-grade security and infrastructure optimization for Moodle, Canvas, and enterprise LMS environments. GDPR compliance, 99.9% uptime, 24/7 monitoring.">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --slate-navy: #0F172A;
+            --slate-800: #1E293B;
+            --white: #FFFFFF;
+            --electric-blue: #007BFF;
+            --blue-600: #2563EB;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --red-500: #EF4444;
+            --yellow-500: #F59E0B;
+            --green-500: #22C55E;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--slate-navy);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .logo-mark-placeholder {
+            width: 36px;
+            height: 36px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 3px;
+        }
+
+        .logo-mark span {
+            background: var(--white);
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--electric-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--blue-600);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--white);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--gray-400);
+            padding: 8px 16px;
+        }
+
+        .btn-ghost:hover {
+            color: var(--white);
+        }
+
+        .btn-lg {
+            padding: 16px 32px;
+            font-size: 1rem;
+        }
+
+        /* Bett Banner */
+        .bett-banner {
+            background: linear-gradient(90deg, var(--electric-blue) 0%, var(--blue-600) 100%);
+            padding: 12px 0;
+            text-align: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            position: fixed;
+            top: 76px;
+            left: 0;
+            right: 0;
+            z-index: 99;
+        }
+
+        .bett-banner a {
+            color: white;
+            text-decoration: underline;
+            margin-left: 8px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 160px;
+            padding-bottom: 80px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--gray-400);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .hero-platforms {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hero-platforms p {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-500);
+            margin-bottom: 16px;
+        }
+
+        .platform-logos {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            flex-wrap: wrap;
+            opacity: 0.7;
+        }
+
+        .platform-logos span {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--gray-400);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-card {
+            background: var(--slate-800);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 32px;
+        }
+
+        .hero-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .hero-card-header h3 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-400);
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: var(--green-500);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--green-500);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .metric {
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .metric-value.green { color: var(--green-500); }
+        .metric-value.blue { color: var(--electric-blue); }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Risk Section */
+        .risk-section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--electric-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--gray-400);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.0625rem;
+        }
+
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 800px) {
+            .risk-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .risk-card {
+            background: var(--slate-800);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+
+        .risk-card:hover {
+            border-color: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+
+        .risk-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(0, 123, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .risk-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--electric-blue);
+        }
+
+        .risk-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .risk-card p {
+            color: var(--gray-400);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        /* Protocol Section */
+        .protocol-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,123,255,0.02) 50%, transparent 100%);
+        }
+
+        .protocol-timeline {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .protocol-step {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 48px;
+            position: relative;
+        }
+
+        .protocol-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 27px;
+            top: 56px;
+            bottom: -48px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--electric-blue) 0%, rgba(0,123,255,0.2) 100%);
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: var(--electric-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .step-content .subtitle {
+            color: var(--electric-blue);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .step-content p {
+            color: var(--gray-400);
+            line-height: 1.7;
+        }
+
+        .protocol-cta {
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 100px 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 48px;
+        }
+
+        @media (max-width: 800px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .benefit-block h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .benefit-block h3::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--electric-blue);
+            border-radius: 2px;
+        }
+
+        .benefit-list {
+            list-style: none;
+        }
+
+        .benefit-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--gray-400);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.9375rem;
+        }
+
+        .benefit-list li::before {
+            content: '→';
+            color: var(--electric-blue);
+            font-weight: 600;
+        }
+
+        /* Founder Section */
+        .founder-section {
+            padding: 100px 0;
+            background: var(--slate-800);
+        }
+
+        .founder-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        @media (max-width: 800px) {
+            .founder-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .founder-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(0,123,255,0.3) 0%, rgba(0,123,255,0.1) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--electric-blue);
+            overflow: hidden;
+        }
+
+        .founder-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .founder-text h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .founder-text .title {
+            color: var(--electric-blue);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .founder-text .locations {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            margin-bottom: 24px;
+        }
+
+        .founder-text p {
+            color: var(--gray-400);
+            margin-bottom: 16px;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+        }
+
+        @media (max-width: 800px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .contact-info p {
+            color: var(--gray-400);
+            margin-bottom: 32px;
+            font-size: 1.0625rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: var(--slate-800);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.2s;
+        }
+
+        .contact-method:hover {
+            background: rgba(0, 123, 255, 0.1);
+        }
+
+        .contact-method-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 123, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-method-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--electric-blue);
+        }
+
+        .contact-method span {
+            font-weight: 500;
+        }
+
+        .contact-method small {
+            display: block;
+            color: var(--gray-500);
+            font-size: 0.75rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--slate-800);
+            border-radius: 12px;
+            padding: 40px;
+        }
+
+        .contact-form h3 {
+            font-size: 1.25rem;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--gray-400);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--slate-navy);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-text {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: var(--gray-500);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        /* Mobile nav */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .bett-banner {
+                font-size: 0.75rem;
+                padding: 10px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="/" class="logo">
+                    <img src="images/logo-white.svg" alt="Gridline Education">
+                </a>
+                <nav class="nav-links">
+                    <a href="#services">Services</a>
+                    <a href="#protocol">The Protocol</a>
+                    <a href="#about">About</a>
+                    <a href="#contact" class="btn btn-primary">Request Audit</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bett Banner -->
+    <div class="bett-banner">
+        📍 Visit us at Bett London 2025 — Stand SP40 <a href="#contact">Book a meeting →</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Structural Integrity for Your Digital Campus.</h1>
+                    <p>We guarantee GDPR compliance, security, and 99.9% uptime for Moodle, Canvas, and enterprise LMS environments. Powered by AI-driven monitoring.</p>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn btn-primary btn-lg">
+                            Book Infrastructure Audit
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="#protocol" class="btn btn-secondary btn-lg">View Service Standards</a>
+                    </div>
+                    <div class="hero-platforms">
+                        <p>Certified experts for</p>
+                        <div class="platform-logos">
+                            <span>Moodle</span>
+                            <span>Canvas</span>
+                            <span>Blackboard</span>
+                            <span>D2L</span>
+                            <span>Schoology</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <div class="hero-card-header">
+                            <h3>Infrastructure Status</h3>
+                            <div class="status-badge">
+                                <span class="status-dot"></span>
+                                All Systems Secure
+                            </div>
+                        </div>
+                        <div class="metric-grid">
+                            <div class="metric">
+                                <div class="metric-value green">99.9%</div>
+                                <div class="metric-label">Uptime SLA</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value blue">24/7</div>
+                                <div class="metric-label">AI Monitoring</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value green">GDPR</div>
+                                <div class="metric-label">Compliant</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value blue">0</div>
+                                <div class="metric-label">Security Breaches</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Section -->
+    <section class="risk-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Hidden Risks</div>
+                <h2>The Hidden Risks in Your LMS.</h2>
+                <p>Most universities unknowingly operate with critical vulnerabilities. Our audit reveals what's hiding in your infrastructure.</p>
+            </div>
+            <div class="risk-grid">
+                <div class="risk-card">
+                    <div class="risk-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>GDPR Exposure</h3>
+                    <p>Where is your student data actually stored? We map and seal data leaks, ensuring full regulatory compliance.</p>
+                </div>
+                <div class="risk-card">
+                    <div class="risk-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                    </div>
+                    <h3>Plugin Vulnerabilities</h3>
+                    <p>Unpatched plugins are the #1 attack vector. We audit, update, and lock down every integration point.</p>
+                </div>
+                <div class="risk-card">
+                    <div class="risk-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3>Technical Debt</h3>
+                    <p>Old courses and bloated databases slow down learning. We purge the waste and optimize for speed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Protocol Section -->
+    <section class="protocol-section" id="protocol">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">The Gridline Protocol</div>
+                <h2>From Risk to Stability.</h2>
+                <p>A systematic approach to securing your educational infrastructure.</p>
+            </div>
+            <div class="protocol-timeline">
+                <div class="protocol-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>The Audit</h3>
+                        <div class="subtitle">Comprehensive Infrastructure Scan</div>
+                        <p>We scan your entire infrastructure and deliver a Red/Yellow/Green risk scorecard. You'll see exactly where your vulnerabilities are and get a prioritized remediation roadmap.</p>
+                    </div>
+                </div>
+                <div class="protocol-step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>The Hardening</h3>
+                        <div class="subtitle">Immediate Risk Remediation</div>
+                        <p>We fix the 'Red' risks immediately—patching exploits, sealing data leaks, purging technical debt, and optimizing database performance for measurable speed gains.</p>
+                    </div>
+                </div>
+                <div class="protocol-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>The Watchtower</h3>
+                        <div class="subtitle">Continuous Protection</div>
+                        <p>24/7 AI-driven monitoring, proactive security updates, and guaranteed 99.9% uptime. Monthly reports ensure continuous compliance and peace of mind.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="protocol-cta">
+                <a href="#contact" class="btn btn-primary btn-lg">Start Your Audit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">What We Deliver</div>
+                <h2>Engineering Excellence.</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-block">
+                    <h3>Security & Compliance</h3>
+                    <ul class="benefit-list">
+                        <li>Full GDPR compliance audit and remediation</li>
+                        <li>End-to-end encryption implementation</li>
+                        <li>Vulnerability scanning and penetration testing</li>
+                        <li>Access control and authentication hardening</li>
+                    </ul>
+                </div>
+                <div class="benefit-block">
+                    <h3>Performance & Optimization</h3>
+                    <ul class="benefit-list">
+                        <li>Database optimization and query performance</li>
+                        <li>Plugin audit and bloat removal</li>
+                        <li>Caching and CDN configuration</li>
+                        <li>99.9% uptime SLA guarantee</li>
+                    </ul>
+                </div>
+                <div class="benefit-block">
+                    <h3>Migration & Implementation</h3>
+                    <ul class="benefit-list">
+                        <li>Zero-downtime LMS migrations</li>
+                        <li>Legacy system data preservation</li>
+                        <li>Custom integration development</li>
+                        <li>Staff training and onboarding</li>
+                    </ul>
+                </div>
+                <div class="benefit-block">
+                    <h3>The Teacher Promise</h3>
+                    <ul class="benefit-list">
+                        <li>We handle the tech, you focus on teaching</li>
+                        <li>A faster, simpler, beautiful experience</li>
+                        <li>Seamless updates with zero-hassle admin</li>
+                        <li>Direct support line for urgent issues</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder-section" id="about">
+        <div class="container">
+            <div class="founder-content">
+                <div class="founder-image">LJ</div>
+                <div class="founder-text">
+                    <h3>Financial-Grade Security for Educational Technology.</h3>
+                    <div class="title">Founded by Lars Janér</div>
+                    <div class="locations">📍 Madrid • London • São Paulo</div>
+                    <p>Previously Co-Founder of Educbank, bringing financial-grade security standards to educational technology. Universities deserve the same level of infrastructure engineering that Fortune 500 companies demand.</p>
+                    <p><em>"Security isn't a feature—it's the foundation everything else is built on."</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Ready to Secure Your Digital Campus?</h2>
+                    <p>Request a complimentary infrastructure audit. We'll identify your hidden risks and show you exactly how to eliminate them.</p>
+
+                    <div class="contact-methods">
+                        <a href="mailto:lars@gridlineeducation.com" class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <span>lars@gridlineeducation.com</span>
+                                <small>Email us directly</small>
+                            </div>
+                        </a>
+                        <a href="https://linkedin.com/in/larsjanér" target="_blank" class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                    <rect x="2" y="9" width="4" height="12"/>
+                                    <circle cx="4" cy="4" r="2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <span>Connect on LinkedIn</span>
+                                <small>Let's start a conversation</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Request Your Free Audit</h3>
+                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Dr. Jane Smith">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Work Email</label>
+                            <input type="email" id="email" name="email" required placeholder="j.smith@university.edu">
+                        </div>
+                        <div class="form-group">
+                            <label for="institution">Institution</label>
+                            <input type="text" id="institution" name="institution" required placeholder="University of London">
+                        </div>
+                        <div class="form-group">
+                            <label for="lms">Current LMS Platform</label>
+                            <select id="lms" name="lms">
+                                <option value="">Select your platform</option>
+                                <option value="moodle">Moodle</option>
+                                <option value="canvas">Canvas</option>
+                                <option value="blackboard">Blackboard</option>
+                                <option value="d2l">D2L Brightspace</option>
+                                <option value="schoology">Schoology</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">What challenges are you facing?</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your current infrastructure concerns..."></textarea>
+                        </div>
+                        <input type="hidden" name="_subject" value="New Audit Request from Gridline Website">
+                        <button type="submit" class="btn btn-primary btn-lg form-submit">
+                            Request Free Audit
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-text">
+                    © 2026 Gridline Education. All rights reserved.
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
