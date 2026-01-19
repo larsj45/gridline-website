@@ -1074,7 +1074,7 @@
 
                 <div class="contact-form">
                     <h3>Request Your Free Audit</h3>
-                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <form id="audit-form">
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" required placeholder="Dr. Jane Smith">
@@ -1103,14 +1103,22 @@
                             <label for="message">What challenges are you facing?</label>
                             <textarea id="message" name="message" placeholder="Tell us about your current infrastructure concerns..."></textarea>
                         </div>
-                        <input type="hidden" name="_subject" value="New Audit Request from Gridline Website">
                         <button type="submit" class="btn btn-primary btn-lg form-submit">
-                            Request Free Audit
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <span class="btn-text">Request Free Audit</span>
+                            <span class="btn-loading" style="display: none;">Sending...</span>
+                            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
                         </button>
                     </form>
+                    <div id="form-success" style="display: none; text-align: center; padding: 40px 20px;">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" style="margin-bottom: 16px;">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                        <h3 style="margin-bottom: 8px;">Request Received!</h3>
+                        <p style="color: #94A3B8;">Check your email for a confirmation. I'll be in touch within 24 hours.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1130,5 +1138,54 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('audit-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoading = submitBtn.querySelector('.btn-loading');
+            const btnArrow = submitBtn.querySelector('.btn-arrow');
+
+            // Show loading state
+            btnText.style.display = 'none';
+            btnArrow.style.display = 'none';
+            btnLoading.style.display = 'inline';
+            submitBtn.disabled = true;
+
+            const data = {
+                name: form.name.value,
+                email: form.email.value,
+                institution: form.institution.value,
+                lms: form.lms.value,
+                message: form.message.value
+            };
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    // Show success message
+                    form.style.display = 'none';
+                    document.getElementById('form-success').style.display = 'block';
+                } else {
+                    throw new Error('Failed to submit');
+                }
+            } catch (error) {
+                alert('Something went wrong. Please email lars@gridlineeducation.com directly.');
+                // Reset button
+                btnText.style.display = 'inline';
+                btnArrow.style.display = 'inline';
+                btnLoading.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
 </body>
 </html>
