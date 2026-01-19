@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     // Send notification email to you
     await resend.emails.send({
       from: 'Gridline Website <noreply@gridlineeducation.com>',
-      to: 'lars@gridlineeducation.com',
+      to: 'hello@gridlineeducation.com',
       subject: `New Audit Request: ${institution}`,
       html: `
         <h2>New Audit Request from Gridline Website</h2>
@@ -36,17 +36,16 @@ export default async function handler(req, res) {
 
     // Send confirmation email to the lead
     await resend.emails.send({
-      from: 'Lars Janér <lars@gridlineeducation.com>',
+      from: 'Gridline Education <hello@gridlineeducation.com>',
       to: email,
       subject: 'Your Infrastructure Audit Request - Gridline Education',
       html: `
         <p>Hi ${name.split(' ')[0]},</p>
-        <p>Thank you for your interest in Gridline Education. I've received your audit request for <strong>${institution}</strong> and will be in touch within 24 hours.</p>
-        <p>In the meantime, if you're attending Bett London, come visit us at <strong>Stand SP40</strong> — I'd love to meet in person.</p>
+        <p>Thank you for your interest in Gridline Education. We've received your audit request for <strong>${institution}</strong> and will be in touch within 24 hours.</p>
+        <p>In the meantime, if you're attending Bett London, come visit us at <strong>Stand SP40</strong> — we'd love to meet in person.</p>
         <p>Best regards,</p>
-        <p><strong>Lars Janér</strong><br>
-        Founder, Gridline Education<br>
-        lars@gridlineeducation.com</p>
+        <p><strong>The Gridline Team</strong><br>
+        hello@gridlineeducation.com</p>
       `,
     });
 
